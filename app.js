@@ -53,7 +53,7 @@ const firstPost = new Post({
 app.get("/", function(req, res){
   Post.find({}, function(err,posts){
 
-      res.render(__dirname + "/views/home.ejs", {
+      res.render( "/views/home.ejs", {
           firstParagraph: homeStartingContent,
 //        newPosts foreatch loop inside home.ejs
           posts:posts
@@ -65,19 +65,19 @@ app.get("/", function(req, res){
 });//end app.get
 
 app.get("/about", function(req, res) {
-  res.render(__dirname + "/views/about.ejs", {
+  res.render( "/views/about.ejs", {
     secondParagraph: contactContent
   });
 });
 
 app.get("/contact", function(req, res) {
-  res.render(__dirname + "/views/contact.ejs", {
+  res.render( "/views/contact.ejs", {
     thirdParagraph: contactContent
   });
 });
 
 app.get("/compose", function(req, res) {
-  res.render(__dirname + "/views/compose.ejs");
+  res.render( "/views/compose.ejs");
   // console.log(res.send());
 
 });
