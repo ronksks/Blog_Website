@@ -54,7 +54,7 @@ const firstPost = new Post({
 app.get("/", function(req, res){
   Post.find({}, function(err,posts){
 
-      res.sendFile(__dirname + "/views/home.ejs", {
+      res.render(path.join(__dirname + "/views/home.ejs"), {
           firstParagraph: homeStartingContent,
 //        newPosts foreatch loop inside home.ejs
           posts:posts
@@ -66,19 +66,19 @@ app.get("/", function(req, res){
 });//end app.get
 
 app.get("/about", function(req, res) {
-  res.sendFile(path.join(__dirname + "/views/about.ejs"), {
+  res.render(path.join(__dirname + "/views/about.ejs"), {
     secondParagraph: contactContent
   });
 });
 
 app.get("/contact", function(req, res) {
-  res.sendFile(path.join(__dirname + "/views/contact.ejs"), {
+  res.render(path.join(__dirname + "/views/contact.ejs"), {
     thirdParagraph: contactContent
   });
 });
 
 app.get("/compose", function(req, res) {
-  res.sendFile(path.join(__dirname + "/views/compose.ejs"));
+  res.render(path.join(__dirname + "/views/compose.ejs"));
   // console.log(res.send());
 
 });
@@ -103,7 +103,7 @@ app.post("/compose", function(req, res){
 app.get("/posts/:postId", function(req, res) {
   const requestedId = req.params.postId;
   Post.findOne({_id: requestedId}, function(err, post){
-      res.sendFile(path.join("post",{
+      res.render(path.join("post",{
         title: post.title,
         content: post.content
       }));
