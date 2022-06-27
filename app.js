@@ -53,11 +53,11 @@ const firstPost = new Post({
 app.get("/", function(req, res){
   Post.find({}, function(err,posts){
 
-      res.render(__dirname + "/views/home.ejs", {
+      res.sendFile(path.join(__dirname + "/views/home.ejs", {
           firstParagraph: homeStartingContent,
 //        newPosts foreatch loop inside home.ejs
           posts:posts
-      });// end render
+      }));// end render
 
 
 
@@ -65,22 +65,22 @@ app.get("/", function(req, res){
 });//end app.get
 
 app.get("/about", function(req, res) {
-  res.render(__dirname + "/views/about.ejs", {
+  res.sendFile(path.join(__dirname + "/views/about.ejs", {
     secondParagraph: contactContent
-  });
+  }));
 });
 
 app.get("/contact", function(req, res) {
-  res.render(__dirname + "/views/contact.ejs", {
+  res.sendFile(path.join(__dirname + "/views/contact.ejs", {
     thirdParagraph: contactContent
-  });
+  }));
 });
 
 app.get("/compose", function(req, res) {
-  res.render(__dirname + "/views/compose.ejs");
+  res.sendFile(path.join(__dirname + "/views/compose.ejs");
   // console.log(res.send());
 
-});
+)});
 
 // in compose page- set new var title and contact
 // create new Post with thes vars
@@ -102,10 +102,10 @@ app.post("/compose", function(req, res){
 app.get("/posts/:postId", function(req, res) {
   const requestedId = req.params.postId;
   Post.findOne({_id: requestedId}, function(err, post){
-      res.render("post",{
+      res.sendFile(path.join("post",{
         title: post.title,
         content: post.content
-      });
+      }));
     }); // post
   });//app.get
 
