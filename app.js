@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
+const path = require("path");
 
 
 
@@ -77,10 +78,10 @@ app.get("/contact", function(req, res) {
 });
 
 app.get("/compose", function(req, res) {
-  res.sendFile(path.join(__dirname + "/views/compose.ejs");
+  res.sendFile(path.join(__dirname + "/views/compose.ejs"));
   // console.log(res.send());
 
-)});
+});
 
 // in compose page- set new var title and contact
 // create new Post with thes vars
