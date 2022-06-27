@@ -54,7 +54,7 @@ const firstPost = new Post({
 app.get("/", function(req, res){
   Post.find({}, function(err,posts){
 
-      res.render(path.join(__dirname + "/views/home.ejs"), {
+      res.render(__dirname + "/views/home.ejs", {
           firstParagraph: homeStartingContent,
 //        newPosts foreatch loop inside home.ejs
           posts:posts
