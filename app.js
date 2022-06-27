@@ -54,11 +54,11 @@ const firstPost = new Post({
 app.get("/", function(req, res){
   Post.find({}, function(err,posts){
 
-      res.sendFile(path.join(__dirname + "/views/home.ejs", {
+      res.sendFile(path.join(__dirname + "/views/home.ejs"), {
           firstParagraph: homeStartingContent,
 //        newPosts foreatch loop inside home.ejs
           posts:posts
-      }));// end render
+      });// end render
 
 
 
@@ -66,15 +66,15 @@ app.get("/", function(req, res){
 });//end app.get
 
 app.get("/about", function(req, res) {
-  res.sendFile(path.join(__dirname + "/views/about.ejs", {
+  res.sendFile(path.join(__dirname + "/views/about.ejs"), {
     secondParagraph: contactContent
-  }));
+  });
 });
 
 app.get("/contact", function(req, res) {
-  res.sendFile(path.join(__dirname + "/views/contact.ejs", {
+  res.sendFile(path.join(__dirname + "/views/contact.ejs"), {
     thirdParagraph: contactContent
-  }));
+  });
 });
 
 app.get("/compose", function(req, res) {
