@@ -21,10 +21,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 //heroku login
-// mongoose.connect("mongodb+srv://admin-ronksks:Test123@cluster0.80wja.mongodb.net/blog_websiteDB");
+mongoose.connect("mongodb+srv://admin-ronksks:Test123@cluster0.80wja.mongodb.net/blog_websiteDB");
 // mongoose.connect("mongodb+srv://admin-ronksks:Test123@cluster0.80wja.mongodb.net/?retryWrites=true&w=majority");
 //local login
-mongoose.connect("mongodb://localhost:27017/blog_websiteDB");
+// mongoose.connect("mongodb://localhost:27017/blog_websiteDB");
 
 const postSchema = new mongoose.Schema({
   title: {
@@ -116,11 +116,35 @@ app.get("/posts/:postId", function(req, res) {
 
 
 
-  // app.listen(process.env.PORT, function() {
-  //   console.log("Server has started on port 3000");
-  // });
+  app.listen(process.env.PORT, function() {
+    console.log("Server has started on port 3000");
+  });
   // let port = process.env.PORT;
   // if (port == null || port == "") {
   //   port = 3000;
   // }
-  app.listen(3000);
+  // app.listen(port);
+
+
+
+
+
+  home.ejs ********************************************
+
+
+  <%- include("partials/header"); -%>
+
+      <h1>Home</h1>
+      <p> <%= firstParagraph %> </p>
+
+
+    <%  posts.forEach(function(post){ %>
+
+      <h1><%= post.title%></h1><p><%= post.content.substring(0, 100) + " ..."%>
+      <a href="/posts/<%=post._id%>">Read More</a></p>
+
+
+      <% }) %>
+
+
+  <%- include("partials/footer"); -%>
